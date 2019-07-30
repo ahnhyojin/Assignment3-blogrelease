@@ -1,3 +1,4 @@
+{% load staticfiles %}
 <!Doctype html>
 <html lang="en">
   <head>
@@ -16,7 +17,7 @@
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity= "sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
 
     <style>
       .bd-placeholder-img {
@@ -37,9 +38,10 @@
     <!-- Custom styles for this template -->
     <link href="album.css" rel="stylesheet">
   </head>
-
+<!--
 <body>
-<nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+  <header>
+  <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
     <div class="container d-flex justify-content-between">
       <a href="{% url 'index' %}" class="navbar-brand d-flex align-items-center">
         <svg  xmlns=" " width="20" height="20" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" aria-hidden="true" class="mr-2" viewBox="0 0 24 24" focusable="false"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/></svg>
@@ -49,26 +51,119 @@
             </button>
         <div class="collapse navbar-collapse" id = "navbarCollapse">
           <ul class="navbar-nav ml-auto">
+            {% if user.is_authenticated %}  
             <li class="nav-item active">
-                <a class="nav-link" href="{% url 'edit' %}">글쓰기 <span class="sr-only">(current)</span></a>
+                <a class="nav-link" href="{% url 'new' %}">글쓰기 <span class="sr-only">(current)</span></a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#">로그인</a>
+                <form id = 'logout' method="POST" action="{% url 'logout' %}">
+                  {% csrf_token %}
+                  <input type="hidden">
+                </form>
+                <a class="nav-link"  href="javascript:{document.getElementById('logout').submit()}">Logout</a>
+            </li> 
+           {% else %}
+            <li class="nav-item">
+                <a class="nav-link" href="{% url 'signup' %}">Sign up</a>
             </li> 
           </ul>
              <li class="nav-item">
-              <a class= "btn btn-outline-success my-2 my-sm-0" href="#">Sign up</a>  
+              <a class= "btn btn-outline-success my-2 my-sm-0" href="{% url 'login' %}">로그인</a>  
             </li> 
+         {% endif %}
+          </div>
+      </div>
+    </nav>
+  </header>
+-->
+
+
+<style>
+.jumbotron{
+  background-image: url("{% static 'back.jpg' %}");
+  background-size: cover;
+}
+
+.jumbotron-heading{
+  color:aliceblue;
+}
+
+.leadtextmuted{
+  color:azure;
+}
+    ul {
+      position: relative;
+      list-style-type: none;
+      margin: 0;
+      padding: 0;
+      overflow: hidden;
+      background-color:#FFFFFF;
+     
+    }
+    body{
+        min-width: 760px;
+    }
+    li {
+      float: left;
+      display: block;
+      color: white;
+      padding: 18px 24px;
+      text-decoration: none;
+      font-size: 14px;
+    }
+.adopt a:hover { color:white; text-decoration: none;}
+
+
+    .right {
+        position: absolute;
+        left: 80%;
+        }
+     a:link { color:whitesmoke; text-decoration: none;}
+     a:visited { color: white; text-decoration: none;}
+     a:hover { color: wheat; text-decoration: underline;}
+    </style>
+    </head>
+    
+    <body>
+    
+     <ul>
+        <div class = "adopt" >
+          <strong></strong><li> <h6><svg  xmlns=" " width="20" height="20" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" aria-hidden="true" class="mr-2" viewBox="0 0 24 24" focusable="false"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/></svg>
+            <a href="{% url 'index' %}">Delicious&Tasty</a></h6></strong></li>  <!-- 톡방에 있는 그 로고? 넣을 예정입니다-->
         </div>
-    </div>
-</nav>
- 
-
-
-
+           
+            <div class = "right">
+             
+          
+                {% if user.is_authenticated %}   
+                <li><a href="{% url 'new' %}">글쓰기</a></li>
+                <li>
+                <form id = 'logout' method="POST" action="{% url 'logout' %}">
+                  {% csrf_token %}
+                  <input type="hidden">
+                </form>
+                <a href="javascript:{document.getElementById('logout').submit()}">로그아웃</a></li>
+                {% else %}  
+                 <li><a href="{% url 'login' %}">로그인하기</a></li>
+                <li><a href="{% url 'signup' %}">가입하기</a></li>
+                {% endif %}
+              </strong> 
+            </div>
+        </div>
+        <main role = "main">
+            <section class="text-center">
+              <div class="jumbotron" ><br><br><br><br><br>
+             <!--<img src = "{% static 'towm.jpg' %}" alt = "">-->
+                <h1 class="jumbotron-heading">Delicious&Tasty Food</h1>
+            <p class="leadtextmuted">Please Introduce your Favorite Resturants in Your Town!</p>
+           <!-- <p> <a href="http://www.seosan.go.kr/" class="btn btn-primary my-2">About Seosan</a>
+              <a href="#" class="btn btn-secondary my-2">Secondary action</a>
+            </p>--><br><br>
+              </div>
+            </section>
+          
 
 <!--이 아래에 컨텐츠가 올 예정입니다.  다른 거면 컨텐츠 자리에 타이틀 등등 가능    main이랑 header구분 어떻게???????-->
 {% block contents %}
 
 {% endblock %}  
-</body>

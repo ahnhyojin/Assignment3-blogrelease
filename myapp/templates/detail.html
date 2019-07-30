@@ -1,15 +1,28 @@
 {% extends 'base.html' %}   <!-- 우선순위 가장 위! 가장 먼저 써주기-->
 {% block contents %}
+{% load staticfiles %}
+<style>
 
-
-<div class="container">
-    <h1>{{post.title}}</h1>
-    <p>{{post.pub_date}}</p>
-    <p>{{post.body}}</p>
-
-
+.container{
+    width: 940px;
+    margin: 0 auto;
+}
+</style>
+<br><br><br>
+ 
+<div class="container"  >
+    <div class = mr-md-3 sytle = "margin-right: 30rem;">
+    <h1>{{posts.title}}</h1>
+   
+     <section class="text-right"> <p>{{posts.pub_date}}<br>글쓴이: {{posts.author}}</p></section>
+    <img src = "{{posts.image.url}}" height = 300 ><br><br>
+    <p>{{posts.body}}</p><br>
+    <section class="text-right"><a href="{% url 'delete' posts.id %}"><button type="button" class="btn btn-info">삭제하기</button></a>&nbsp;
+<a href="{% url 'index' %}"><button type="button" class="btn btn-info">홈으로</button></a></section>
+   <br><br>
 </div>
-
+</div>
+</body>
 
 
 

@@ -1,0 +1,29 @@
+{% extends 'base.html' %}   <!-- 우선순위 가장 위! 가장 먼저 써주기-->
+{% block contents %}
+{% load staticfiles %}
+
+<style>
+.container{
+    width: 940px;
+    margin: 0 auto;
+}
+</style>
+
+<body>
+<div class= 'container'>
+ <br> <h6>새 글 작성</h6><br>
+<form action="{% url 'create' %}" method = "POST"  enctype = "multipart/form-data">
+  {% csrf_token %}
+    제목:
+	<input type="text" name="title"  style="width:700px;">
+    <br><br>
+    <textarea cols = "120" rows = "20" name = "fulltext"></textarea>
+    <br>
+    <input class="upload_image" type="file" name="image">
+    <br><br>
+    <section class="text-right"> <input class="btn btn-info" type = "submit" value = "제출하기"></section>
+  </form>
+</div>
+
+<br><br><br>
+{% endblock %}
