@@ -20,15 +20,15 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # See https://docs.djangoproject.com/en/2.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = os.environ.get(‘DJANGO_SECRET_KEY’,')b9-8-x(ozo(*d70t_4d28tpjjc6xtmh1ewr+)7xo71!qt^)nl')
+SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY',')b9-8-x(ozo(*d70t_4d28tpjjc6xtmh1ewr+)7xo71!qt^)nl')
 # SECURITY WARNING: don't run with debug turned on in production!
 
 DEBUG = False
-DEBUG = bool(os.environ.get(‘DJANGO_DEBUG’, True))
+DEBUG = bool(os.environ.get('DJANGO_DEBUG', True))
 
 #DEBUG = bool(os.environ.get(‘DJANGO_DEBUG’, True))-->
 
-ALLOWED_HOSTS=[‘*’]
+ALLOWED_HOSTS=["*"]
 
 # Application definition
 
@@ -81,12 +81,11 @@ WSGI_APPLICATION = 'myproject.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
-        db_from_env = dj_database_url.config(conn_max_age=500)
-        DATABASE['default'].update(db_from_env)
+        'NAME': os.path.join(BASE_DIR, 'db.sqlite3')
     }
 }
-
+db_from_env = dj_database_url.config(conn_max_age=500)
+DATABASES['default'].update(db_from_env)
 
 # Password validation
 # https://docs.djangoproject.com/en/2.2/ref/settings/#auth-password-validators
