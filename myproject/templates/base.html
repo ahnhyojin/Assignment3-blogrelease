@@ -7,7 +7,7 @@
     <meta name="description" content="">
     <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
     <meta name="generator" content="Jekyll v3.8.5">
-    <title>맛집tour</title>
+    <title>Delicious&Tasty</title>
 
     <link rel="canonical" href="https://getbootstrap.com/docs/4.3/examples/album/">
 
@@ -112,15 +112,25 @@
       font-size: 14px;
     }
 .adopt a:hover { color:white; text-decoration: none;}
+.adopt a:link { color:whitesmoke; text-decoration: none;}
+.adopt{
+  color:white;
+}
+.textmuted a:hover{ color:black}
+.textmuted a:link { color:black; text-decoration: none;}
+
+
 
 
     .right {
         position: absolute;
         left: 80%;
         }
-     a:link { color:whitesmoke; text-decoration: none;}
-     a:visited { color: white; text-decoration: none;}
-     a:hover { color: wheat; text-decoration: underline;}
+    a:link { color:whitesmoke; text-decoration: none;}
+   a:visited { color: white; text-decoration: none;}
+  a:hover { color: wheat; text-decoration: underline;}
+     
+.float-right{color:black; text-decoration: none;}
     </style>
     </head>
     
@@ -153,17 +163,23 @@
         <main role = "main">
             <section class="text-center">
               <div class="jumbotron" ><br><br><br><br><br>
-             <!--<img src = "{% static 'towm.jpg' %}" alt = "">-->
+           
                 <h1 class="jumbotron-heading">Delicious&Tasty Food</h1>
             <p class="leadtextmuted">Please Introduce your Favorite Resturants in Your Town!</p>
-           <!-- <p> <a href="http://www.seosan.go.kr/" class="btn btn-primary my-2">About Seosan</a>
-              <a href="#" class="btn btn-secondary my-2">Secondary action</a>
-            </p>--><br><br>
+         
+           <br><br>
               </div>
             </section>
           
-
+          
 <!--이 아래에 컨텐츠가 올 예정입니다.  다른 거면 컨텐츠 자리에 타이틀 등등 가능    main이랑 header구분 어떻게???????-->
 {% block contents %}
 
 {% endblock %}  
+  <footer class="textmuted">
+                <div class="container">
+                  <p class="float-right">
+                    <a href="#">Back to top</a>
+                  </p>
+                </div>
+              </footer>

@@ -1,6 +1,6 @@
 {% extends 'base.html' %}   
 {% block contents %}
-<br><br><br><br>
+<br>
 <style>
 .card{
     left:0; right:0; margin-left:auto; margin-right:auto; 
@@ -16,13 +16,13 @@
     <form method = "POST" action = "{% url 'signup' %}">
     <br>
         {% csrf_token %}  <!--POST 방식을 쓸때, 보안위해 써주는 것이 좋다-->
-        아이디
+        아이디 &nbsp&nbsp&nbsp
         <input name = 'username' type = 'text' value = "">
         <br><br>
-        비밀번호:
+        비밀번호&nbsp
         <input name = 'password1' type = 'password' value = "">
         <br><br>
-        confirm password:
+        비밀번호 확인
         <input name = 'password2' type = 'password' value = "">
         {% if error %}
         <br><br>
@@ -42,5 +42,5 @@
   </div>
 </div>
 </div>
-
+<br><br><br>
 {% endblock %}

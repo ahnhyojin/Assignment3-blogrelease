@@ -9,7 +9,17 @@ class Post(models.Model):
     image = models.ImageField(upload_to = 'images/', null = True, blank = True)
     body = models.TextField(max_length= 500 )
    
+
     def __str__(self):
         return self.title
+        
+    def _require_file(self):
+        if not self:
+            raise ValueError("The '%s' attribute has no file associated with it." % self.field.name)
+
+    def _get_file(self):
+        self._require_file()
+        ...
+
 
     
